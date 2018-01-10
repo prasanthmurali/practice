@@ -20,7 +20,7 @@ public class stack {
 	{
 		if(top>=MAX)
 		{
-			System.out.println("Stack Overflow");
+			System.out.println("stack Overflow");
 			return false;
 		}
 		else if(top<0)
@@ -41,7 +41,7 @@ public class stack {
 	{
 		if(top<0)
 		{
-			System.out.println("Stack empty");
+			System.out.println("stack empty");
 			return 0;
 		}
 		else
@@ -52,7 +52,7 @@ public class stack {
 	{
 		if(top<=0)
 		{
-			System.out.println("Stack empty");
+			System.out.println("stack empty");
 			return 0;
 		}
 		else
@@ -93,7 +93,7 @@ public class stack {
 		else if(r.top==0)
 		{
 			r.push(pop);
-			copyElementsBetweenStacks(t,r);
+			copyElementsBetweenstacks(t,r);
 		}
 		else
 		{
@@ -107,8 +107,8 @@ public class stack {
 			{
 				t.push(pop);
 				t.push(x);
-				copyElementsBetweenStacks(r,t);	
-				copyElementsBetweenStacks(t,r);
+				copyElementsBetweenstacks(r,t);	
+				copyElementsBetweenstacks(t,r);
 			}
 		}
 	}
@@ -116,14 +116,14 @@ public class stack {
 	/*
 	 * Copy elements from stack one to stack two
 	 */
-	private static void copyElementsBetweenStacks(stack r, stack t) {
+	private static void copyElementsBetweenstacks(stack r, stack t) {
 		// TODO Auto-generated method stub
 		if(r.top<=0)
 			return;
 		else
 		{
 			t.push(r.pop());
-			copyElementsBetweenStacks(r,t);
+			copyElementsBetweenstacks(r,t);
 		}
 	}
 
@@ -137,22 +137,39 @@ public class stack {
 		s.push(14);
 		s.push(-3);
 		
-		stack sortedStack = recursiveSort(s,new stack());
-		printStack(sortedStack);
+//		stack sortedstack = recursiveSort(s,new stack());
+//		printstack(sortedstack);
+		
+		stack reversedstack = reversestack(s,new stack());
+		printstack(reversedstack);
 	}
 
 	/*
 	 * Print elements of the stack 
 	 * Warning: Pops all elements of the stack
 	 */
-	public static void printStack(stack s)
+	public static void printstack(stack s)
 	{
 		if(s.top<=0)
 			return;
 		else
 		{
 			System.out.println(s.pop());
-			printStack(s);
+			printstack(s);
+		}
+	}
+	
+	/*
+	 * reverse a stack w/o loops
+	 */
+	public static stack reversestack(stack s, stack t)
+	{
+		if(s.top<=0)
+			return t;
+		else
+		{
+			t.push(s.pop());
+			return reversestack(s,t);
 		}
 	}
 	
